@@ -56,7 +56,8 @@ class Diffusion:
          # HINT: sample noise from a normal distribution. It should match the shape of x 
         assert noise.shape == x.shape, 'Invalid shape of noise'
         
-        x_noised = sqrt_alpha_bar * x + sqrt_one_minus_alpha_bar * noise # HINT: Create the noisy version of x. See Eq. 4 in the ddpm paper at page 2
+        x_noised = sqrt_alpha_bar[t] * x + sqrt_one_minus_alpha_bar[t] * noise # calculate the noised version of x. See Eq. 4 in the ddpm paper at page 2
+        # HINT: Create the noisy version of x. See Eq. 4 in the ddpm paper at page 2
         return x_noised, noise
     
 
