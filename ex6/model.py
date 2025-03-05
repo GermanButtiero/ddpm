@@ -176,7 +176,7 @@ class UNet(nn.Module):
 class Classifier(nn.Module):
     def __init__(self, img_size=16, c_in=3, labels=5, time_dim=256, device="cuda", channels=32):
         super().__init__()
-        self.unet = UNet(img_size=img_size, c_in=c_in, c_out=3, time_dim=time_dim, device=device, channels=channels, num_classes=labels)
+        self.unet = UNet(img_size=img_size, c_in=c_in, c_out=c_in, time_dim=time_dim, device=device, channels=channels, num_classes=labels)
         self.fc = nn.Linear(img_size * img_size * 3, labels)
         self.device = device
 
