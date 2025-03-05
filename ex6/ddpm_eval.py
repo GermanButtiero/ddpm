@@ -2,7 +2,7 @@ import os
 import matplotlib.pyplot as plt
 from scipy import linalg
 from tqdm import tqdm
-
+from scipy.linalg import sqrtm
 # torch
 import torch
 import torch.nn as nn
@@ -52,10 +52,14 @@ def frechet_distance(mu1, sigma1, mu2, sigma2):
     # https://en.wikipedia.org/wiki/Fr%C3%A9chet_distance
     # HINT: https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.sqrtm.html
     # Implement FID score
+    diff = mu1 - mu2
+    cov_sqrt, _ = sqrtm(sigma1 @ sigma2, disp=False)  
+    if np.iscomplexobj(cov_sqrt):
+        cov_sqrt = cov_sqrt.real  
 
-    fid = ...
-
+    fid = np.sum(diff**2) + np.trace(sigma1 + sigma2 - 2 * cov_sqrt)
     return fid
+
 
 if __name__ == '__main__':
     set_seed()
