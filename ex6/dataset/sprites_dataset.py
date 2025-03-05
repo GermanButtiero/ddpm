@@ -9,8 +9,8 @@ from .helpers import set_seed
 class SpritesDataset(Dataset):
     def __init__(self, 
             transform,
-            sfilename='./data/sprites.npy', 
-            lfilename='./data/labels.npy', 
+            sfilename='ex6/data/sprites.npy', 
+            lfilename='ex6/data/labels.npy', 
             num_samples=40000,
             seed=1,
         ):

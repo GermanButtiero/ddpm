@@ -80,7 +80,7 @@ def train(device='cpu', T=500, img_size=16, input_channels=3, channels=32, time_
 
     
     # save your checkpoint in weights/classifier/model.pth
-    torch.save(model.state_dict(), os.path.join("weights", exp_name, 'model.pth'))
+    torch.save(model.state_dict(), os.path.join("ex6/weights", exp_name, 'model.pth'))
 
 def main():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')  

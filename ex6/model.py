@@ -182,7 +182,7 @@ class Classifier(nn.Module):
 
     def forward(self, x, t):
         x = self.unet(x, t)
-        x = x.view(x.size(0), -1)
+        x = x.reshape(x.size(0), -1)
         x = self.fc(x)
         return x
         
